@@ -4,7 +4,6 @@ public class ReservaVuelo {
     public String registrarReserva(String codigoReserva, String nombrePasajero,
                                    String numeroPasaporte, int cantidadAsientos,
                                    String fechaVuelo) {
-
         if (codigoReserva == null || codigoReserva.isEmpty() ||
                 nombrePasajero == null || nombrePasajero.isEmpty() ||
                 numeroPasaporte == null || numeroPasaporte.isEmpty() ||
