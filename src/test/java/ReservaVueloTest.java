@@ -40,6 +40,16 @@ class ReservaVueloTest {
         assertEquals("Ingrese un número de pasaporte válido", resultado);
     }
 
+    @Test
+    @DisplayName("Test 4 - Cantidad de asientos menor o igual a 0")
+    void testCantidadAsientosInvalida() {
+        String resultado = reservaVuelo.registrarReserva(
+                "AB1234", "Victor", "AB1234567", 0, "2026-03-01"
+        );
+        assertEquals("La cantidad de asientos debe ser mayor a cero", resultado);
+    }
+
+
 
 
 
