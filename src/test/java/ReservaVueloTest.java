@@ -57,6 +57,19 @@ class ReservaVueloTest {
         );
         assertEquals("La fecha del vuelo debe ser posterior a la fecha actual", resultado);
     }
+    @Test
+    @DisplayName("Test 6 - Reserva exitosa y datos vacíos")
+    void testReservaExitosaYCamposVacios() {
+        String resultado1 = reservaVuelo.registrarReserva(
+                "AB1234", "Victor", "AB1234567", 2, "2026-03-15"
+        );
+        assertEquals("La reserva ha sido registrada correctamente", resultado1);
+
+        String resultado2 = reservaVuelo.registrarReserva(
+                "", "", "", 0, ""
+        );
+        assertEquals("Debe ingresar todos los datos requeridos", resultado2);
+    }
 
 
 
