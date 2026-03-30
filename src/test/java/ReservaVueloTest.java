@@ -22,6 +22,55 @@ class ReservaVueloTest {
         assertEquals("Ingrese un código de reserva válido", resultado);
     }
 
+    @Test
+    @DisplayName("Test 2 - Nombre con menos de 5 caracteres")
+    void testNombrePasajeroInvalido() {
+        String resultado = reservaVuelo.registrarReserva(
+                "ABC123", "Ana", "AB1234567", 2, "2027-12-01"
+        );
+        assertEquals("El nombre del pasajero debe tener al menos cinco caracteres alfabéticos", resultado);
+    }
+
+    @Test
+    @DisplayName("Test 3 - Número de pasaporte inválido")
+    void testNumeroPasaporteInvalido() {
+        String resultado = reservaVuelo.registrarReserva(
+                "ABC123", "Carlos", "AB123", 2, "2027-12-01"
+        );
+        assertEquals("Ingrese un número de pasaporte válido", resultado);
+    }
+
+    @Test
+    @DisplayName("Test 4 - Cantidad de asientos menor o igual a 0")
+    void testCantidadAsientosInvalida() {
+        String resultado = reservaVuelo.registrarReserva(
+                "ABC123", "Victor", "AB1234567", 0, "2027-12-01"
+        );
+        assertEquals("La cantidad de asientos debe ser mayor a cero", resultado);
+    }
+
+    @Test
+    @DisplayName("Test 5 - Fecha del vuelo anterior")
+    void testFechaVueloInvalida() {
+        String resultado = reservaVuelo.registrarReserva(
+                "ABC123", "Victor", "AB1234567", 2, "2020-03-20"
+        );
+        assertEquals("La fecha del vuelo debe ser posterior a la fecha actual", resultado);
+    }
+
+    @Test
+    @DisplayName("Test 6 - Reserva exitosa y datos vacíos")
+    void testReservaExitosaYCamposVacios() {
+        String resultado1 = reservaVuelo.registrarReserva(
+                "ABC123", "Victor", "AB1234567", 2, "2027-12-01"
+        );
+        assertEquals("La reserva ha sido registrada correctamente", resultado1);
+
+        String resultado2 = reservaVuelo.registrarReserva(
+                "", "", "", 0, ""
+        );
+        assertEquals("Debe ingresar todos los datos requeridos", resultado2);
+    }
 
 
 
